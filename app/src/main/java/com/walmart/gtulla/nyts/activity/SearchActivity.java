@@ -17,7 +17,7 @@ import android.widget.Toast;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
-import com.walmart.gtulla.nyts.Article;
+import com.walmart.gtulla.nyts.model.Article;
 import com.walmart.gtulla.nyts.ArticleArrayAdapter;
 import com.walmart.gtulla.nyts.R;
 
@@ -36,6 +36,9 @@ public class SearchActivity extends AppCompatActivity {
     Button btnSearch;
     List<Article> articles;
     ArticleArrayAdapter adapter;
+    int  status_code =50;
+    String beginDate = "";
+    String endDate="";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -80,10 +83,21 @@ public class SearchActivity extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            Intent i = new Intent(this, SearchOptionsActivity.class);
+            startActivityForResult(i, status_code);
             return true;
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (resultCode == RESULT_OK && requestCode == status_code) {
+            beginDate = data.getExtras().get("fromDate").toString();
+            endDate = data.getExtras().get("toDate").toString();
+
+        }
     }
 
     public void searchByQuery(View view) {
@@ -95,6 +109,12 @@ public class SearchActivity extends AppCompatActivity {
         reqParams.put("api-key", "9541123aee094fa1a3d3da9cfe54d21e");
         reqParams.put("page", 0);
         reqParams.put("q", query);
+        if(beginDate != null && ! beginDate.isEmpty() &&
+                endDate != null && ! endDate.isEmpty()) {
+            reqParams.put("begin_date", beginDate);
+            reqParams.put("end_date", endDate);
+        }
+
         client.get(url, reqParams, new JsonHttpResponseHandler() {
             /*
             @Override

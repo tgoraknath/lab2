@@ -5,7 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
-import com.walmart.gtulla.nyts.Article;
+import com.walmart.gtulla.nyts.model.Article;
 import com.walmart.gtulla.nyts.R;
 
 public class ArticleActivity extends AppCompatActivity {

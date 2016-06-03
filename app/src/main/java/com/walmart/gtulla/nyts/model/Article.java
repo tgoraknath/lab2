@@ -1,4 +1,4 @@
-package com.walmart.gtulla.nyts;
+package com.walmart.gtulla.nyts.model;
 
 import android.os.Parcel;
 import android.os.Parcelable;
