@@ -24,7 +24,7 @@ The following **bonus** features are implemented:
 
 Here's a walkthrough of implemented user stories:
 
-<img src='https://github.com/tgoraknath/lab2/blob/master/android_labApp2.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='https://github.com/tgoraknath/lab2/blob/master/android_labApp2_0603.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
